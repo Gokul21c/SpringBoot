@@ -1,0 +1,33 @@
+#QA Environemnt Configuration
+spring:
+  datasource:
+    username: sa
+    password: 
+    url: jdbc:h2:mem:cswp
+    driver-class-name:  org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2Console
+  profiles: qa
+---
+#DEV Environemnt Configuration
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cswp
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  profiles: dev
+---
+spring:
+  profiles:
+    active: dev
+     
+      
